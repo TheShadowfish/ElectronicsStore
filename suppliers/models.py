@@ -12,9 +12,9 @@ class Supplier(models.Model):
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
     email = models.EmailField(verbose_name="email")
-    country = models.TextField(max_length=70, verbose_name="контакты")
-    city = models.TextField(max_length=70, verbose_name="контакты")
-    street = models.TextField(max_length=150, verbose_name="контакты")
+    country = models.TextField(max_length=70, verbose_name="страна")
+    city = models.TextField(max_length=70, verbose_name="город")
+    street = models.TextField(max_length=150, verbose_name="улица")
     house_number = models.TextField(max_length=10, verbose_name="номер дома")
 
     # продукт
