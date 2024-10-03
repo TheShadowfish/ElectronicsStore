@@ -33,10 +33,11 @@ class Supplier(models.Model):
 
 
     def __str__(self):
-        if self.prev_supplier:
-            return f"{self.name}, продукт {self.product_name}, предыдущий поставщик {self.prev_supplier}"
-        else:
-            return f"{self.name}, продукт {self.product_name}"
+        # if self.prev_supplier:
+        #     return f"{self.name}, продукт {self.product_name}, предыдущий поставщик {self.prev_supplier}"
+        # else:
+        #     return f"{self.name}, продукт {self.product_name}"
+        return f"{self.name}, продукт {self.product_name}"
 
     class Meta:
         verbose_name = "поставщик"
