@@ -11,7 +11,7 @@ from suppliers.models import Supplier
 # Register your models here.
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ["pk", "name", "product_name", "prev_supplier", "debt", "city", "prev_supplier_link", "ierarchy_level"]
+    list_display = ["pk", "name", "product_name", "debt", "city", "prev_supplier_link", "ierarchy_level"]
     list_filter = ["city", "name", "product_name"]
     ordering = ["name"]
     search_fields = ["city", "name"]
@@ -74,7 +74,7 @@ class SupplierAdmin(admin.ModelAdmin):
                 return f'{ierarchy_level} ({num} level)'
 
         else:
-            return f'{ierarchy_level} - (first level)'
+            return f'{ierarchy_level} (first level)'
 
 
 
