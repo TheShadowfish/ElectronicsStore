@@ -1,5 +1,5 @@
-from django.contrib import admin
-from django.core.checks import messages
+from django.contrib import admin, messages
+
 from django.utils.translation import ngettext
 
 from suppliers.models import Supplier
@@ -27,9 +27,10 @@ class SupplierAdmin(admin.ModelAdmin):
     search_fields = ["city", "name"]
     actions = ["clean_debt"]
 
-    @admin.action(description="Clean debt")
+    @admin.action(description="Clean selected " + Supplier._meta.get_field('debt').verbose_name)
     def clean_debt(self, request, queryset):
-        queryset.update(debt=0)
+        #  + " " + Supplier._meta.verbose_name_plural.title().lower()
+        updated = queryset.update(debt=0)
         self.message_user(
             request,
             ngettext(
