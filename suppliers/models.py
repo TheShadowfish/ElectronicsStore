@@ -16,11 +16,15 @@ def validate_prev_supplier(prev_supplier):
         ierarchy_level += 1
         next = Supplier.objects.get(pk=pr_s_id)
 
-        if next.prev_supplier_id is not None:
+        if ierarchy_level > 2:
+            raise ValidationError(f'Длина звена цепи должен быть не больше 3 участников',
+                                  params={'prev_supplier': prev_supplier})
+
+        if next is not None:
             pr_s_id = next.prev_supplier_id
-            if ierarchy_level > 2:
-                raise ValidationError('Длина звена цепи должен быть не больше 3 участников',
-                                      params={'prev_supplier': prev_supplier})
+
+        else:
+            pr_s_id = None
 
 
 class Supplier(models.Model):
