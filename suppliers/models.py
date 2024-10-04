@@ -1,7 +1,26 @@
-# from django.contrib import admin
+from django.core.exceptions import ValidationError
 from django.db import models
 
+# from suppliers.validators import validate_prev_supplier
+
 NULLABLE = {"blank": True, "null": True}
+
+
+def validate_prev_supplier(prev_supplier):
+    """Проверяет, не вышла ли цепочка поставщиков за пределы уровней иерархической структуры
+    (по ТЗ должно быть 3 уровня и не больше) """
+    ierarchy_level = 0
+    pr_s_id = prev_supplier
+
+    while (pr_s_id):
+        ierarchy_level += 1
+        next = Supplier.objects.get(pk=pr_s_id)
+
+        if next.prev_supplier_id is not None:
+            pr_s_id = next.prev_supplier_id
+            if ierarchy_level > 2:
+                raise ValidationError('Длина звена цепи должен быть не больше 3 участников',
+                                      params={'prev_supplier': prev_supplier})
 
 
 class Supplier(models.Model):
@@ -24,13 +43,13 @@ class Supplier(models.Model):
     product_date = models.DateField(verbose_name="дата выхода продукта на рынок")
 
     # поставщик (рекурсивная связь модели)
-    prev_supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name="Поставщик", **NULLABLE)
+    prev_supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name="Поставщик", **NULLABLE,
+                                      validators=[validate_prev_supplier])
     # Задолженность перед поставщиком в денежном выражении с точностью до копеек.
-    debt = models.DecimalField(max_digits=20, decimal_places=2, default=0.00, verbose_name="задолженность перед поставщиком")
+    debt = models.DecimalField(max_digits=20, decimal_places=2, default=0.00,
+                               verbose_name="задолженность перед поставщиком")
     # Время создания (заполняется автоматически при создании).
-    created_at = models.DateTimeField(verbose_name="время создания", auto_now_add=True,)
-
-
+    created_at = models.DateTimeField(verbose_name="время создания", auto_now_add=True, )
 
     def __str__(self):
         # if self.prev_supplier:
