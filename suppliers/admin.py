@@ -17,8 +17,7 @@ class SupplierAdmin(admin.ModelAdmin):
     search_fields = ["city", "name"]
     actions = ["clean_debt"]
 
-    # Add it to the details view:
-    readonly_fields = ("ierarchy_level", "prev_supplier_link",)
+    # readonly_fields = ("ierarchy_level", "prev_supplier_link",)
 
     @admin.action(description="Clean selected " + Supplier._meta.get_field('debt').verbose_name)
     def clean_debt(self, request, queryset):

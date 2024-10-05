@@ -1,14 +1,19 @@
 from django.urls import path
 from rest_framework.permissions import AllowAny
+from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from suppliers.apps import SuppliersConfig
-from suppliers.views import redirect_to_admin
+from suppliers.views import redirect_to_admin, SupplierViewSet
 
 # from habits.views import HabitsListAPIView, HabitsRetrieveAPIView, HabitsCreateAPIView, HabitsUpdateAPIView, \
 #     HabitsDestroyAPIView, HabitsPublicListAPIView
 
 app_name = SuppliersConfig.name
+
+router = SimpleRouter()
+router.register("", SupplierViewSet)
+
 
 urlpatterns = [
     path("login/", TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name="token_obtain_pair"),
@@ -23,3 +28,5 @@ urlpatterns = [
 
     path("", redirect_to_admin, name="enter"),
 ]
+
+urlpatterns += router.urls
