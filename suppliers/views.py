@@ -13,6 +13,7 @@ def redirect_to_admin(request):
     # Не набирать без конца адрес в браузере
     return redirect("admin/")
 
+
 class SupplierViewSet(ModelViewSet):
     queryset = Supplier.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
@@ -21,8 +22,15 @@ class SupplierViewSet(ModelViewSet):
     #     serializer.save(reg_user=self.request.user)
 
     # serializer_class = CourseSerializer
+    # def get_queryset(self):
+    #     prev = self.request.GET.get('prev_supplier', None)
+    #     return Supplier.objects.filter(pk=prev).pk
+
 
     def get_serializer_class(self):
+        print("SERIALIZER")
         if self.action == "update":
             return SupplierSerializerUpdate
         return SupplierSerializer
+
+

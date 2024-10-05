@@ -6,14 +6,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from suppliers.apps import SuppliersConfig
 from suppliers.views import redirect_to_admin, SupplierViewSet
 
-# from habits.views import HabitsListAPIView, HabitsRetrieveAPIView, HabitsCreateAPIView, HabitsUpdateAPIView, \
-#     HabitsDestroyAPIView, HabitsPublicListAPIView
-
-app_name = SuppliersConfig.name
-
 router = SimpleRouter()
-router.register("", SupplierViewSet)
-
+router.register("suppliers", SupplierViewSet, basename='suppliers')
+app_name = SuppliersConfig.name
 
 urlpatterns = [
     path("login/", TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name="token_obtain_pair"),

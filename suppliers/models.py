@@ -9,14 +9,17 @@ NULLABLE = {"blank": True, "null": True}
 def validate_prev_supplier(prev_supplier):
     """Проверяет, не вышла ли цепочка поставщиков за пределы уровней иерархической структуры
     (по ТЗ должно быть 3 уровня и не больше) """
+
     ierarchy_level = 0
-    pr_s_id = prev_supplier
+
+    pr_s_id = prev_supplier.pk
 
     while (pr_s_id):
         ierarchy_level += 1
         next = Supplier.objects.get(pk=pr_s_id)
 
         if ierarchy_level > 2:
+            print(f"prev_supplier 2 {prev_supplier}")
             raise ValidationError(f'Длина звена цепи должен быть не больше 3 участников',
                                   params={'prev_supplier': prev_supplier})
 
@@ -25,6 +28,9 @@ def validate_prev_supplier(prev_supplier):
 
         else:
             pr_s_id = None
+    else:
+        # print(f"prev_supplier 3 {prev_supplier}")
+        return prev_supplier
 
 
 class Supplier(models.Model):
@@ -48,7 +54,7 @@ class Supplier(models.Model):
 
     # поставщик (рекурсивная связь модели)
     prev_supplier = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name="Поставщик", **NULLABLE,
-                                      validators=[validate_prev_supplier])
+                                      validators=[validate_prev_supplier], related_name="prev",)
     # Задолженность перед поставщиком в денежном выражении с точностью до копеек.
     debt = models.DecimalField(max_digits=20, decimal_places=2, default=0.00,
                                verbose_name="задолженность перед поставщиком")
@@ -66,3 +72,21 @@ class Supplier(models.Model):
         verbose_name = "поставщик"
         verbose_name_plural = "поставщики"
         ordering = ["country"]
+
+    # def save(self):
+
+
+        # prev_supplier
+        # def perform_update(self, serializer):
+        #     habit = serializer.save()
+        #     owner_time_offset = self.request.user.time_offset
+        #     hour = habit.time.hour - owner_time_offset
+        #     if hour > 24:
+        #         hour -= 24
+        #         habit.weekday_offset = -1
+        #     elif hour < 0:
+        #         hour = 24 + hour
+        #         habit.weekday_offset = 1
+        #     habit.utc_time = time(hour, int(habit.time.minute), 0, 0)
+        #
+        #     habit.save()
