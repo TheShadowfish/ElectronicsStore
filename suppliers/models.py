@@ -12,7 +12,11 @@ def validate_prev_supplier(prev_supplier):
 
     ierarchy_level = 0
 
-    pr_s_id = prev_supplier.pk
+    if isinstance(prev_supplier, int):
+        pr_s_id = prev_supplier
+    else:
+        pr_s_id = prev_supplier.pk
+    # pr_s_id = prev_supplier.pk
 
     while (pr_s_id):
         ierarchy_level += 1

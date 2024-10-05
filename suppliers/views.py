@@ -18,19 +18,21 @@ class SupplierViewSet(ModelViewSet):
     queryset = Supplier.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(reg_user=self.request.user)
-
-    # serializer_class = CourseSerializer
-    # def get_queryset(self):
-    #     prev = self.request.GET.get('prev_supplier', None)
-    #     return Supplier.objects.filter(pk=prev).pk
-
 
     def get_serializer_class(self):
-        print("SERIALIZER")
-        if self.action == "update":
+        if self.action == "update" or self.action == "partial_update":
             return SupplierSerializerUpdate
         return SupplierSerializer
 
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `username` query parameter in the URL.
+        """
+        queryset = Supplier.objects.all()
+        country = self.request.query_params.get('country')
 
+        if country is not None:
+            queryset = queryset.filter(country=country)
+
+        return queryset
