@@ -7,7 +7,7 @@ from suppliers.apps import SuppliersConfig
 from suppliers.views import redirect_to_admin, SupplierViewSet
 
 router = SimpleRouter()
-router.register("suppliers", SupplierViewSet, basename='suppliers')
+router.register("suppliers", SupplierViewSet, basename="suppliers")
 app_name = SuppliersConfig.name
 
 urlpatterns = [
