@@ -38,6 +38,34 @@ def validate_prev_supplier(prev_supplier):
         # print(f"prev_supplier 3 {prev_supplier}")
         return prev_supplier
 
+class Product(models.Model):
+    product_name = models.CharField(max_length=250, verbose_name="название продукта")
+    product_model = models.CharField(max_length=50, verbose_name="модель продукта")
+    product_date = models.DateField(verbose_name="дата выхода продукта на рынок")
+
+    def __str__(self):
+        return f"продукт {self.product_name}"
+
+    class Meta:
+        verbose_name = "продукт"
+        verbose_name_plural = "продукты"
+        ordering = ["product_name"]
+
+class Contact(models.Model):
+    email = models.EmailField(verbose_name="email")
+    country = models.TextField(max_length=70, verbose_name="страна")
+    city = models.TextField(max_length=70, verbose_name="город")
+    street = models.TextField(max_length=150, verbose_name="улица")
+    house_number = models.TextField(max_length=10, verbose_name="номер дома")
+
+    def __str__(self):
+        return f"контакт {self.email}, {self.country} {self.city} {self.street} {self.house_number}"
+
+    class Meta:
+        verbose_name = "контакт"
+        verbose_name_plural = "контакты"
+        ordering = ["country"]
+
 
 class Supplier(models.Model):
     """Поставщик оборудования (продукта)"""
@@ -45,6 +73,9 @@ class Supplier(models.Model):
     # предприятие
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
+    contacts = models.ForeignKey("Contact", on_delete=models.CASCADE, verbose_name="Контакты", **NULLABLE,
+                                      validators=[validate_prev_supplier], related_name="contacts",)
+
     email = models.EmailField(verbose_name="email")
     country = models.TextField(max_length=70, verbose_name="страна")
     city = models.TextField(max_length=70, verbose_name="город")
@@ -52,6 +83,10 @@ class Supplier(models.Model):
     house_number = models.TextField(max_length=10, verbose_name="номер дома")
 
     # продукт
+    product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name="Продукт", **NULLABLE,
+                                 validators=[validate_prev_supplier], related_name="product", )
+
+
     product_name = models.CharField(max_length=250, verbose_name="название продукта")
     product_model = models.CharField(max_length=50, verbose_name="модель продукта")
     product_date = models.DateField(verbose_name="дата выхода продукта на рынок")
