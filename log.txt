@@ -1,0 +1,128 @@
+This is a test message.
+This is SPARTAAAAAA!!!!!!!!!!!!!!!11111111111111
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is a test message.
+This is SPARTAAAAAA!!!!!!!!!!!!!!!11111111111111
+validated_data1 {'name': 'ФПК "Туц-Туц"', 'debt': Decimal('999.00'), 'prev_supplier': None}
+This is a test message.
+This is a test message.
+This is a test message.
+This is SPARTAAAAAA!!!!!!!!!!!!!!!11111111111111
+validated_data1 {'name': 'ФПК "Туц-Туц"', 'debt': Decimal('999.00'), 'prev_supplier': None}
+This is a test message.
+This is a test message.
+This is a test message.
+This is SPARTAAAAAA!!!!!!!!!!!!!!!11111111111111
+validated_data1 {'name': 'ФПК "Туц-Туц"', 'prev_supplier': None, 'debt': Decimal('999.00')}
+Time 2024-10-07 17:56:59.930729
+Time 2024-10-07 18:26:01.934801
+Time 2024-10-07 18:42:29.536453
+Time Serializer 2024-10-07 18:50:50.236663
+Time initial_data 2024-10-07 18:51:00.531472
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+Time Serializer 2024-10-07 19:09:57.597714
+Time Serializer 2024-10-07 19:11:06.854743
+Time Serializer 2024-10-07 19:12:31.751675
+Time Serializer 2024-10-07 19:19:03.678995
+Time Serializer 2024-10-07 19:24:06.336928
+Time initial_data 2024-10-07 19:24:20.469822
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+Time Serializer 2024-10-07 19:33:06.952094
+Time Serializer 2024-10-07 19:51:53.490365
+Time Serializer 2024-10-07 19:52:27.373943
+Time Serializer 2024-10-07 19:57:45.702865
+Time Serializer 2024-10-07 20:00:00.001328
+Time initial_data 2024-10-07 20:00:06.253566
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+Time Serializer 2024-10-07 20:01:22.748614
+Time initial_data 2024-10-07 20:01:23.652116
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 11} |
+Time Serializer 2024-10-07 20:05:14.494846
+Time initial_data 2024-10-07 20:05:16.174911
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 12} |
+Time Serializer 2024-10-07 20:06:12.634281
+Time initial_data 2024-10-07 20:06:18.290309
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 13} |
+Time Serializer 2024-10-07 20:15:56.186549
+Time initial_data 2024-10-07 20:15:57.903903
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct 14 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 14} |
+Time Serializer 2024-10-07 20:17:14.340085
+Time initial_data 2024-10-07 20:17:14.921318
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 15} |
+Time Serializer 2024-10-07 20:19:22.502623
+Time initial_data 2024-10-07 20:19:23.636534
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 16} |
+Time Serializer 2024-10-07 20:21:13.277001
+Time initial_data 2024-10-07 20:21:17.611277
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 17} |
+Time Serializer 2024-10-07 20:22:39.908904
+Time initial_data 2024-10-07 20:22:44.370874
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 18} |
+Time Serializer 2024-10-07 20:23:17.830172
+Time initial_data 2024-10-07 20:23:22.144129
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 19} |
+Time Serializer 2024-10-07 20:24:23.133219
+Time initial_data 2024-10-07 20:24:26.605066
+initial_data1 {'name': 'ФПК "Туц-Туц"', 'contacts': {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}, 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+self.initial_data['contacts'] {'email': 'tuztuz@sky.pro', 'country': 'Россия', 'city': 'Мухознанск', 'street': 'Большие ямыри', 'house_number': '13'}
+ct контакты: tuztuz@sky.pro, Россия Мухознанск Большие ямыри 13 |
+initial_data2 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None} |
+initial_data3 {'name': 'ФПК "Туц-Туц"', 'product': 1, 'debt': '999.00', 'prev_supplier': None, 'contacts': 20} |
