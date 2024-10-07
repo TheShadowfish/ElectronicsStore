@@ -4,10 +4,15 @@ from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from suppliers.apps import SuppliersConfig
-from suppliers.views import redirect_to_admin, SupplierViewSet
+from suppliers.views import redirect_to_admin, SupplierViewSet, ContactsViewSet, ProductsViewSet
 
 router = SimpleRouter()
 router.register("suppliers", SupplierViewSet, basename="suppliers")
+
+router.register("contacts", ContactsViewSet, basename="contacts")
+router.register("products", ProductsViewSet, basename="products")
+
+
 app_name = SuppliersConfig.name
 
 urlpatterns = [

@@ -39,39 +39,19 @@ def validate_prev_supplier(prev_supplier):
 
 
 def validate_contacts(contacts):
-    if contacts is None:
-        raise ValidationError(f"Поле 'контакты' не может быть пустым",
-                              params={"contacts": contacts})
+    if isinstance(contacts, int):
+        print("ALL OK")
+        return contacts
+    else:
+        contacts_pk = contacts.pk
 
 
-# def validate_product(product, prev_supplier):
-#     ierarchy_level = 0
-#
-#     if isinstance(prev_supplier, int):
-#         pr_s_id = prev_supplier
-#     else:
-#         pr_s_id = prev_supplier.pk
-#
-#     if not pr_s_id:
-#
-#     # pr_s_id = prev_supplier.pk
-#
-#     while (pr_s_id):
-#         ierarchy_level += 1
-#         next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
-#         if ierarchy_level > 2:
-#             raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников {next_supplier}",
-#                                   params={"prev_supplier": prev_supplier})
-#
-#         if next_supplier is not None:
-#
-#             pr_s_id = next_supplier.prev_supplier_id
-#
-#         else:
-#             pr_s_id = None
-#     else:
-#         # print(f"prev_supplier 3 {prev_supplier}")
-#         return prev_supplier
+        print(f"ALL NO OK, type {type(contacts)}, isinstance(contacts, int) {isinstance(contacts, int)}, contacts_pk {contacts_pk}")
+
+        contacts = contacts_pk
+        return contacts_pk
+        # raise ValidationError(f"Создание контактов в классе пока не реализовано, внесите int",
+        #                       params={"contacts": contacts})
 
 
 class Product(models.Model):
@@ -111,7 +91,7 @@ class Supplier(models.Model):
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
     contacts = models.ForeignKey("Contacts", on_delete=models.CASCADE, verbose_name="Контакты",
-                                 related_name="contacts", )
+                                 validators=[validate_contacts], related_name="contacts", )
 
     # продукт
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name="Продукт", **NULLABLE,
