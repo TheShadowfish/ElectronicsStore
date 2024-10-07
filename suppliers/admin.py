@@ -11,8 +11,8 @@ from suppliers.models import Supplier, Contacts, Product
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ["pk", "name", "product", "debt", "supplier_city", "prev_supplier_link", "ierarchy_level"]
-    list_filter = ["city", "name", "product_name"]
-    ordering = ["name"]
+    list_filter = ["name", "product", "contacts__city"]
+    ordering = ["name", "contacts" ]
     search_fields = ["name", "supplier_city"]
     actions = ["clean_debt"]
 

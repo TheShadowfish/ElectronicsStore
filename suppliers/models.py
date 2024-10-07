@@ -12,7 +12,6 @@ def validate_prev_supplier(prev_supplier):
     (по ТЗ должно быть 3 уровня и не больше)
     """
 
-
     ierarchy_level = 0
 
     if isinstance(prev_supplier, int):
@@ -25,7 +24,7 @@ def validate_prev_supplier(prev_supplier):
         ierarchy_level += 1
         next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
         if ierarchy_level > 2:
-            raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников {next_supplier}",
+            raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников",
                                   params={"prev_supplier": prev_supplier})
 
         if next_supplier is not None:
@@ -38,18 +37,56 @@ def validate_prev_supplier(prev_supplier):
         # print(f"prev_supplier 3 {prev_supplier}")
         return prev_supplier
 
+
+def validate_contacts(contacts):
+    if contacts is None:
+        raise ValidationError(f"Поле 'контакты' не может быть пустым",
+                              params={"contacts": contacts})
+
+
+# def validate_product(product, prev_supplier):
+#     ierarchy_level = 0
+#
+#     if isinstance(prev_supplier, int):
+#         pr_s_id = prev_supplier
+#     else:
+#         pr_s_id = prev_supplier.pk
+#
+#     if not pr_s_id:
+#
+#     # pr_s_id = prev_supplier.pk
+#
+#     while (pr_s_id):
+#         ierarchy_level += 1
+#         next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
+#         if ierarchy_level > 2:
+#             raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников {next_supplier}",
+#                                   params={"prev_supplier": prev_supplier})
+#
+#         if next_supplier is not None:
+#
+#             pr_s_id = next_supplier.prev_supplier_id
+#
+#         else:
+#             pr_s_id = None
+#     else:
+#         # print(f"prev_supplier 3 {prev_supplier}")
+#         return prev_supplier
+
+
 class Product(models.Model):
     product_name = models.CharField(max_length=250, verbose_name="название продукта")
     product_model = models.CharField(max_length=50, verbose_name="модель продукта")
     product_date = models.DateField(verbose_name="дата выхода продукта на рынок")
 
     def __str__(self):
-        return f"продукт {self.product_name}"
+        return f"{self.product_name}"
 
     class Meta:
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["product_name"]
+
 
 class Contacts(models.Model):
     email = models.EmailField(verbose_name="email")
@@ -73,27 +110,16 @@ class Supplier(models.Model):
     # предприятие
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
-    contacts = models.ForeignKey("Contacts", on_delete=models.CASCADE, verbose_name="Контакты", **NULLABLE,
-                                      related_name="contacts",)
-
-    email = models.EmailField(verbose_name="email")
-    country = models.TextField(max_length=70, verbose_name="страна")
-    city = models.TextField(max_length=70, verbose_name="город")
-    street = models.TextField(max_length=150, verbose_name="улица")
-    house_number = models.TextField(max_length=10, verbose_name="номер дома")
+    contacts = models.ForeignKey("Contacts", on_delete=models.CASCADE, verbose_name="Контакты",
+                                 related_name="contacts", )
 
     # продукт
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name="Продукт", **NULLABLE,
-                                 related_name="product", )
-
-
-    product_name = models.CharField(max_length=250, verbose_name="название продукта")
-    product_model = models.CharField(max_length=50, verbose_name="модель продукта")
-    product_date = models.DateField(verbose_name="дата выхода продукта на рынок")
+                                related_name="product", )
 
     # поставщик (рекурсивная связь модели)
     prev_supplier = models.ForeignKey("self", on_delete=models.CASCADE, verbose_name="Поставщик", **NULLABLE,
-                                      validators=[validate_prev_supplier], related_name="prev",)
+                                      validators=[validate_prev_supplier], related_name="prev", )
     # Задолженность перед поставщиком в денежном выражении с точностью до копеек.
     debt = models.DecimalField(max_digits=20, decimal_places=2, default=0.00,
                                verbose_name="задолженность перед поставщиком")
@@ -106,4 +132,24 @@ class Supplier(models.Model):
     class Meta:
         verbose_name = "поставщик"
         verbose_name_plural = "поставщики"
-        ordering = ["country"]
+        ordering = ["name"]
+
+    def clean(self):
+        # Не дает одновременно заполнить продукт и поставщика"
+        if self.product is not None and self.prev_supplier is not None:
+            raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
+                                  f"быть пустым",
+                                  params={"product": self.product, "prev_supplier": self.prev_supplier})
+        elif self.product is None and self.prev_supplier is None:
+            raise ValidationError(f"Выберите либо продукт, либо поставщика, от которого он будет унаследован",
+                                  params={"product": self.product, "prev_supplier": self.prev_supplier})
+
+        if self.prev_supplier is not None:
+            pr_s_id = self.prev_supplier_id
+            prev = Supplier.objects.get(pk=pr_s_id)
+            product = Product.objects.get(pk=prev.product_id)
+
+            self.product = product
+
+
+
