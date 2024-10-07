@@ -4,16 +4,16 @@ from django.utils.safestring import mark_safe
 
 from django.utils.translation import ngettext
 
-from suppliers.models import Supplier
+from suppliers.models import Supplier, Contacts, Product
 
 
 # Register your models here.
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
-    list_display = ["pk", "name", "product_name", "debt", "city", "prev_supplier_link", "ierarchy_level"]
+    list_display = ["pk", "name", "product", "debt", "supplier_city", "prev_supplier_link", "ierarchy_level"]
     list_filter = ["city", "name", "product_name"]
     ordering = ["name"]
-    search_fields = ["city", "name"]
+    search_fields = ["name", "supplier_city"]
     actions = ["clean_debt"]
 
     # readonly_fields = ("ierarchy_level", "prev_supplier_link",)
@@ -32,6 +32,15 @@ class SupplierAdmin(admin.ModelAdmin):
             % updated,
             messages.SUCCESS,
         )
+    @admin.display(description="город поставщика")
+    def supplier_city(self, obj):
+        if obj.contacts:
+            city = Contacts.objects.get(pk=obj.contacts_id).city
+            return city
+        else:
+            return None
+
+
 
     @admin.display(description="ссылка на поставщика")
     def prev_supplier_link(self, obj):
@@ -51,7 +60,7 @@ class SupplierAdmin(admin.ModelAdmin):
 
         while pr_s_id:
             ierarchy_level += 1
-            next_supplier = Supplier.objects.get(pk=pr_s_id)
+            next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
 
             if next_supplier.prev_supplier_id is not None:
                 pr_s_id = next_supplier.prev_supplier_id
@@ -66,3 +75,37 @@ class SupplierAdmin(admin.ModelAdmin):
 
         else:
             return f"{ierarchy_level} (first level)"
+
+
+@admin.register(Contacts)
+class SupplierContacts(admin.ModelAdmin):
+    list_display = ["pk", "email", "country", "city", "street", "house_number", "suppliers_number"]
+    list_filter = ["email", "country", "city"]
+    ordering = ["country"]
+    search_fields = ["country", "city", "suppliers_number"]
+
+    @admin.display(description="число поставщиков, использующих эти контакты")
+    def suppliers_number(self, obj):
+        contacts_id = obj.pk
+
+        suppliers_number = Supplier.objects.filter(contacts=contacts_id).count()
+
+        return f"{suppliers_number}"
+
+
+
+@admin.register(Product)
+class SupplierProduct(admin.ModelAdmin):
+    list_display = ["pk", "product_name", "product_model", "product_date", "suppliers_number"]
+    list_filter = ["product_name", "product_model"]
+    ordering = ["product_name"]
+    search_fields = ["product_name"]
+
+
+    @admin.display(description="число поставщиков, оперирующих продуктом")
+    def suppliers_number(self, obj):
+        product_id = obj.pk
+
+        suppliers_number = Supplier.objects.filter(product=product_id).count()
+
+        return f"{suppliers_number}"

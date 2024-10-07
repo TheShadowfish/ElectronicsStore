@@ -13,14 +13,21 @@ class SupplierSerializer(serializers.ModelSerializer):
         # # все поля модели
         #     fields = (
         #         "name",
+
+        #         "contacts",
+
         #         "email",
         #         "country",
         #         "city",
         #         "street",
         #         "house_number",
+
+        #         "product",
+
         #         "product_name",
         #         "product_model",
         #         "product_date",
+
         #         "prev_supplier",
         #         "debt",
         #         "created_at",

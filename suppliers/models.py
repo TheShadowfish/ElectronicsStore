@@ -12,6 +12,7 @@ def validate_prev_supplier(prev_supplier):
     (по ТЗ должно быть 3 уровня и не больше)
     """
 
+
     ierarchy_level = 0
 
     if isinstance(prev_supplier, int):
@@ -22,15 +23,14 @@ def validate_prev_supplier(prev_supplier):
 
     while (pr_s_id):
         ierarchy_level += 1
-        next_supplier = Supplier.objects.get(pk=pr_s_id)
-
+        next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
         if ierarchy_level > 2:
-            print(f"prev_supplier 2 {prev_supplier}")
-            raise ValidationError("Длина звена цепи должен быть не больше 3 участников",
+            raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников {next_supplier}",
                                   params={"prev_supplier": prev_supplier})
 
         if next_supplier is not None:
-            pr_s_id = next.prev_supplier_id
+
+            pr_s_id = next_supplier.prev_supplier_id
 
         else:
             pr_s_id = None
@@ -51,7 +51,7 @@ class Product(models.Model):
         verbose_name_plural = "продукты"
         ordering = ["product_name"]
 
-class Contact(models.Model):
+class Contacts(models.Model):
     email = models.EmailField(verbose_name="email")
     country = models.TextField(max_length=70, verbose_name="страна")
     city = models.TextField(max_length=70, verbose_name="город")
@@ -59,10 +59,10 @@ class Contact(models.Model):
     house_number = models.TextField(max_length=10, verbose_name="номер дома")
 
     def __str__(self):
-        return f"контакт {self.email}, {self.country} {self.city} {self.street} {self.house_number}"
+        return f"контакты: {self.email}, {self.country} {self.city} {self.street} {self.house_number}"
 
     class Meta:
-        verbose_name = "контакт"
+        verbose_name = "контакты"
         verbose_name_plural = "контакты"
         ordering = ["country"]
 
@@ -73,8 +73,8 @@ class Supplier(models.Model):
     # предприятие
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
-    contacts = models.ForeignKey("Contact", on_delete=models.CASCADE, verbose_name="Контакты", **NULLABLE,
-                                      validators=[validate_prev_supplier], related_name="contacts",)
+    contacts = models.ForeignKey("Contacts", on_delete=models.CASCADE, verbose_name="Контакты", **NULLABLE,
+                                      related_name="contacts",)
 
     email = models.EmailField(verbose_name="email")
     country = models.TextField(max_length=70, verbose_name="страна")
@@ -84,7 +84,7 @@ class Supplier(models.Model):
 
     # продукт
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name="Продукт", **NULLABLE,
-                                 validators=[validate_prev_supplier], related_name="product", )
+                                 related_name="product", )
 
 
     product_name = models.CharField(max_length=250, verbose_name="название продукта")
@@ -101,7 +101,7 @@ class Supplier(models.Model):
     created_at = models.DateTimeField(verbose_name="время создания", auto_now_add=True, )
 
     def __str__(self):
-        return f"{self.name}, продукт {self.product_name}"
+        return f"{self.name}, продукт {self.product}"
 
     class Meta:
         verbose_name = "поставщик"
