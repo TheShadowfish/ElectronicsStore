@@ -41,15 +41,15 @@ def validate_prev_supplier(prev_supplier):
 def validate_contacts(contacts):
     if isinstance(contacts, int):
         print("ALL OK")
-        return contacts
+        # return contacts
     else:
         contacts_pk = contacts.pk
 
 
-        print(f"ALL NO OK, type {type(contacts)}, isinstance(contacts, int) {isinstance(contacts, int)}, contacts_pk {contacts_pk}")
+        print(f"ALL NO OK, type {type(contacts)}, isinstance(contacts, int) {isinstance(contacts, int)}, contacts_pk {contacts_pk} |")
 
         contacts = contacts_pk
-        return contacts_pk
+        # return contacts_pk
         # raise ValidationError(f"Создание контактов в классе пока не реализовано, внесите int",
         #                       params={"contacts": contacts})
 
@@ -116,6 +116,8 @@ class Supplier(models.Model):
 
     def clean(self):
         # Не дает одновременно заполнить продукт и поставщика"
+
+        print("SILENT SABOUTAGE!!")
         if self.product is not None and self.prev_supplier is not None:
             raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
                                   f"быть пустым",

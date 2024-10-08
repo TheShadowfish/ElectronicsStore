@@ -3,13 +3,14 @@ from datetime import datetime
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from suppliers.models import Supplier, Contacts, Product
 from suppliers.permissions import IsActive
 from suppliers.serializers import SupplierSerializerUpdate, SupplierSerializer, ContactsSerializer, ProductsSerializer, \
-    SupplierSerializerView
+    SupplierSerializerSimpleCreate
 from suppliers.service import Logger
 
 
@@ -47,8 +48,8 @@ class SupplierViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == "update" or self.action == "partial_update":
             return SupplierSerializerUpdate
-        elif self.action == 'list':
-            return SupplierSerializerView
+        # elif self.action == 'list':
+        #     return SupplierSerializerView
         return SupplierSerializer
 
     def get_queryset(self):
@@ -63,19 +64,7 @@ class SupplierViewSet(ModelViewSet):
 
         return queryset
 
-    def perform_create(self, serializer):
-        print("perform_create")
 
-        # course = serializer.save()
-        # course.save()
-        #
-        # zone = pytz.timezone(settings.TIME_ZONE)
-        # current_datetime_4_hours_ago = datetime.now(zone) - timedelta(hours=4)
-        #
-        # # course = get_object_or_404(Course, course.pk)
-        #
-        # if course.updated_at < current_datetime_4_hours_ago:
-        #     send_information_about_course_update.delay(course.pk)
 
 
 @method_decorator(
@@ -133,4 +122,11 @@ class ProductsViewSet(ModelViewSet):
     queryset = Product.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
     serializer_class = ProductsSerializer
+
+
+class SupplierCreateAPIView(CreateAPIView):
+    """Создание поставщика по имеющимся идентификатора контактов продукта"""
+    queryset = Contacts.objects.all()
+    permission_classes = (IsAuthenticated, IsActive)
+    serializer_class = SupplierSerializerSimpleCreate
 
