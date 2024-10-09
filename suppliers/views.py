@@ -12,7 +12,6 @@ from suppliers.models import Supplier, Contacts, Product
 from suppliers.permissions import IsActive
 from suppliers.serializers import SupplierSerializerUpdate, SupplierSerializer, ContactsSerializer, ProductsSerializer, \
     SupplierSerializerDetail
-from suppliers.service import Logger
 
 
 # def redirect_to_admin(request):
@@ -128,37 +127,18 @@ class SupplierCreateAPIView(CreateAPIView):
     queryset = Contacts.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
 
-    # если возникнет необходимость показать всю цепочку поставщиков в ответе
-    # то можно просто определить новый сериализатор с параметром в Meta depth=2
-    # и вставить сюда
+
     serializer_class = SupplierSerializerDetail
 
-
-
-    def clean(self):
-        # Не дает одновременно заполнить продукт и поставщика"
-
-        print("SupplierCreateAPIView!")
-        if self.product is not None and self.prev_supplier is not None:
-            raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
-                                  f"быть пустым",
-                                  params={"product": self.product, "prev_supplier": self.prev_supplier})
-        elif self.product is None and self.prev_supplier is None:
-            raise ValidationError(f"Выберите либо продукт, либо поставщика, от которого он будет унаследован",
-                                  params={"product": self.product, "prev_supplier": self.prev_supplier})
-
-        if self.prev_supplier is not None:
-            pr_s_id = self.prev_supplier_id
-            prev = Supplier.objects.get(pk=pr_s_id)
-            product = Product.objects.get(pk=prev.product_id)
-
-            self.product = product
 
 
 class SupplierListAPIView(ListAPIView):
     """Список поставщиков включая вложенные модели"""
     queryset = Contacts.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
+    # если возникнет необходимость показать всю цепочку поставщиков в ответе
+    # то можно просто определить новый сериализатор с параметром в Meta depth=2
+    # и вставить сюда
     serializer_class = SupplierSerializerDetail
 
     def get_queryset(self):
