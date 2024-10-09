@@ -1,9 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models import signals
-from django.dispatch import receiver
 
-# from suppliers.validators import validate_prev_supplier
 
 NULLABLE = {"blank": True, "null": True}
 
@@ -22,11 +19,11 @@ def validate_prev_supplier(prev_supplier):
         pr_s_id = prev_supplier.pk
     # pr_s_id = prev_supplier.pk
 
-    while (pr_s_id):
+    while pr_s_id:
         ierarchy_level += 1
         next_supplier = Supplier.objects.filter(pk=pr_s_id).first()
         if ierarchy_level > 2:
-            raise ValidationError(f"Длина звена цепи должен быть не больше 3 участников",
+            raise ValidationError("Длина звена цепи должен быть не больше 3 участников",
                                   params={"prev_supplier": prev_supplier})
 
         if next_supplier is not None:
@@ -36,11 +33,7 @@ def validate_prev_supplier(prev_supplier):
         else:
             pr_s_id = None
     else:
-        # print(f"prev_supplier 3 {prev_supplier}")
         return prev_supplier
-
-
-
 
 
 class Product(models.Model):
@@ -103,25 +96,21 @@ class Supplier(models.Model):
         verbose_name_plural = "поставщики"
         ordering = ["name"]
 
-
     def clean(self):
-        # Не дает одновременно заполнить продукт и поставщика"
+        # Не дает одновременно заполнить продукт и поставщика
         # Не дает установить долг перед поставщиком если его нет
 
         if self.product is not None and self.prev_supplier is not None:
-            raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
-                                  f"быть пустым",
+            raise ValidationError("Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
+                                  "быть пустым",
                                   params={"product": self.product, "prev_supplier": self.prev_supplier})
         elif self.product is None and self.prev_supplier is None:
-            raise ValidationError(f"Выберите либо продукт, либо поставщика, от которого он будет унаследован",
+            raise ValidationError("Выберите либо продукт, либо поставщика, от которого он будет унаследован",
                                   params={"product": self.product, "prev_supplier": self.prev_supplier})
 
         if self.debt != 0 and self.prev_supplier is None:
-            raise ValidationError(f"При отсутствии предыдущего поставщика долг перед ним внести невозможно",
+            raise ValidationError("При отсутствии предыдущего поставщика долг перед ним внести невозможно",
                                   params={"product": self.product, "prev_supplier": self.prev_supplier})
-
-
-
 
         if self.prev_supplier is not None:
             pr_s_id = self.prev_supplier_id
@@ -129,8 +118,3 @@ class Supplier(models.Model):
             product = Product.objects.get(pk=prev.product_id)
 
             self.product = product
-
-
-
-
-

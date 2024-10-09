@@ -12,11 +12,9 @@ from suppliers.models import Supplier, Contacts, Product
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ["pk", "name", "product", "debt", "supplier_city", "prev_supplier_link", "ierarchy_level"]
     list_filter = ["name", "product", "contacts__city"]
-    ordering = ["name", "contacts" ]
+    ordering = ["name", "contacts"]
     search_fields = ["name", "supplier_city"]
     actions = ["clean_debt"]
-
-    # readonly_fields = ("ierarchy_level", "prev_supplier_link",)
 
     @admin.action(description="Clean selected " + Supplier._meta.get_field("debt").verbose_name)
     def clean_debt(self, request, queryset):
@@ -32,6 +30,7 @@ class SupplierAdmin(admin.ModelAdmin):
             % updated,
             messages.SUCCESS,
         )
+
     @admin.display(description="город поставщика")
     def supplier_city(self, obj):
         if obj.contacts:
@@ -39,8 +38,6 @@ class SupplierAdmin(admin.ModelAdmin):
             return city
         else:
             return None
-
-
 
     @admin.display(description="ссылка на поставщика")
     def prev_supplier_link(self, obj):
@@ -93,14 +90,12 @@ class SupplierContacts(admin.ModelAdmin):
         return f"{suppliers_number}"
 
 
-
 @admin.register(Product)
 class SupplierProduct(admin.ModelAdmin):
     list_display = ["pk", "product_name", "product_model", "product_date", "suppliers_number"]
     list_filter = ["product_name", "product_model"]
     ordering = ["product_name"]
     search_fields = ["product_name"]
-
 
     @admin.display(description="число поставщиков, оперирующих продуктом")
     def suppliers_number(self, obj):

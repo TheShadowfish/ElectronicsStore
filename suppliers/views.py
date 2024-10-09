@@ -1,22 +1,14 @@
-from datetime import datetime
-
-from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework.exceptions import ValidationError
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from suppliers.models import Supplier, Contacts, Product
 from suppliers.permissions import IsActive
-from suppliers.serializers import SupplierSerializerUpdate, SupplierSerializer, ContactsSerializer, ProductsSerializer, \
-    SupplierSerializerDetail
+from suppliers.serializers import SupplierSerializerUpdate, SupplierSerializer, ContactsSerializer, \
+    ProductsSerializer, SupplierSerializerDetail
 
-
-# def redirect_to_admin(request):
-#     # Не набирать без конца адрес в браузере
-#     return redirect("admin/")
 
 @method_decorator(
     name="list",
@@ -53,9 +45,8 @@ class SupplierViewSet(ModelViewSet):
         return SupplierSerializer
 
     def get_queryset(self):
-        """
-        Фильтрация по стране в тексте запроса (?country=<countryname>),
-        """
+        """Фильтрация по стране в тексте запроса (?country=<countryname>)"""
+
         queryset = Supplier.objects.all()
         country = self.request.query_params.get("country")
 
@@ -93,6 +84,7 @@ class ContactsViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated, IsActive)
     serializer_class = ContactsSerializer
 
+
 @method_decorator(
     name="list",
     decorator=swagger_auto_schema(operation_description="Вывод списка продуктов"),
@@ -124,27 +116,25 @@ class ProductsViewSet(ModelViewSet):
 
 class SupplierCreateAPIView(CreateAPIView):
     """Создание нового поставщика вместе с его контактами и продуктом"""
+
     queryset = Contacts.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
 
-
     serializer_class = SupplierSerializerDetail
-
 
 
 class SupplierListAPIView(ListAPIView):
     """Список поставщиков включая вложенные модели"""
+
     queryset = Contacts.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
     # если возникнет необходимость показать всю цепочку поставщиков в ответе
-    # то можно просто определить новый сериализатор с параметром в Meta depth=2
+    # тогда можно просто определить новый сериализатор с параметром в Meta depth=2
     # и вставить сюда
     serializer_class = SupplierSerializerDetail
 
     def get_queryset(self):
-        """
-        Фильтрация по стране в тексте запроса (?country=<countryname>),
-        """
+        """Фильтрация по стране в тексте запроса (?country=<countryname>)"""
         queryset = Supplier.objects.all()
         country = self.request.query_params.get("country")
 
@@ -152,4 +142,3 @@ class SupplierListAPIView(ListAPIView):
             queryset = queryset.filter(contacts__country=country)
 
         return queryset
-

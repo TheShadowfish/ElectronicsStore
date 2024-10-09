@@ -18,7 +18,7 @@ class ProductsSerializer(serializers.ModelSerializer):
 
 
 class SupplierSerializer(serializers.ModelSerializer):
-    validators = [serializers.UniqueTogetherValidator(fields=['name', 'contacts'], queryset=Supplier.objects.all())]
+    validators = [serializers.UniqueTogetherValidator(fields=["name", "contacts"], queryset=Supplier.objects.all())]
 
     class Meta:
         model = Supplier
@@ -81,16 +81,14 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class SupplierSerializerUpdate(serializers.ModelSerializer):
-    validators = [serializers.UniqueTogetherValidator(fields=['name', 'contacts'], queryset=Supplier.objects.all())]
+    validators = [serializers.UniqueTogetherValidator(fields=["name", "contacts"], queryset=Supplier.objects.all())]
 
     class Meta:
         model = Supplier
         exclude = ("prev_supplier", "debt", "created_at")
 
     def validate(self, data):
-        """
-        Проверка: либо продукт, либо предыдущий поставщик validate_product_and_prev_supplier
-        """
+
         validate_product_and_prev_supplier(data)
         validate_debt_and_prev_supplier(data)
 
@@ -100,7 +98,6 @@ class SupplierSerializerUpdate(serializers.ModelSerializer):
         supplier = serializer.save()
 
         if supplier.prev_supplier is not None:
-            product = Product.objects.get(pk=self.validated_data.get("prev_supplier").product_id)
             supplier.product = Product.objects.get(pk=supplier.prev_supplier.product_id)
 
         supplier.save()
@@ -123,11 +120,8 @@ class SupplierSerializerDetail(serializers.ModelSerializer):
             "created_at",
         )
 
-
     def validate(self, data):
-        """
-        Проверка: либо продукт, либо предыдущий поставщик validate_product_and_prev_supplier
-        """
+
         validate_product_and_prev_supplier(data)
         validate_debt_and_prev_supplier(data)
 
@@ -135,10 +129,6 @@ class SupplierSerializerDetail(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Альтернативный способ сразу создать звено цепи"""
-        print(f"data {self.validated_data}")
-        print(type(self.validated_data["contacts"]))
-        print(f"{self.validated_data['contacts']}")
-
         # проверка контактов на валидность
         contacts = self.validated_data["contacts"]
         contacts_serializer = ContactsSerializer(data=contacts)
@@ -146,22 +136,15 @@ class SupplierSerializerDetail(serializers.ModelSerializer):
             ct = Contacts.objects.create(**contacts)
             self.validated_data["contacts"] = ct
         else:
-            print(f"raise ValidationError {contacts_serializer.errors} |")
-
             raise ValidationError(contacts_serializer.error_messages)
 
         if self.validated_data["prev_supplier"] is not None:
-            print(f"!!!!!!!!!!!!!!! {self.validated_data['product']}")
-
-
             pr_s_id = self.validated_data["prev_supplier"]
             prev = Supplier.objects.get(pk=pr_s_id)
             product = Product.objects.get(pk=prev.product_id)
             self.validated_data["product"] = product
 
         else:
-            print(f"{self.validated_data['product']}")
-
             product = self.validated_data["product"]
             product_serializer = ProductsSerializer(data=product)
 
@@ -169,27 +152,16 @@ class SupplierSerializerDetail(serializers.ModelSerializer):
                 pt = Product.objects.create(**product)
                 self.validated_data["product"] = pt
             else:
-                self.logger_my(f"raise ValidationError {product_serializer.errors} |")
-                #         # print(f"raise ValidationError {contacts_serializers.errors} |")
                 raise ValidationError(product_serializer.error_messages)
                 # contacts_serializer.save()
 
-        print(f"initial_data3 {self.validated_data} |")
         if self.is_valid():
             return Supplier.objects.create(**self.validated_data)
 
     def perform_create(self, serializer):
         supplier = serializer.save()
 
-
         if supplier.prev_supplier is not None:
-            # pr_s = self.validated_data.get("prev_supplier").product_id
-            # print(f"{pr_s}")
-            # prev = Supplier.objects.get(pk=pr_s.pk)
-            # print(f"{prev}")
-            product = Product.objects.get(pk=self.validated_data.get("prev_supplier").product_id)
-            #
-            # self.validated_data["product"] = product
             supplier.product = Product.objects.get(pk=supplier.prev_supplier.product_id)
 
         supplier.save()

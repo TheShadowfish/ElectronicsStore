@@ -27,6 +27,24 @@
     }
   },
   {
+    "model": "suppliers.product",
+    "pk": 7,
+    "fields": {
+      "product_name": "Выход с этой планеты",
+      "product_model": "777",
+      "product_date": "2024-10-07"
+    }
+  },
+  {
+    "model": "suppliers.product",
+    "pk": 8,
+    "fields": {
+      "product_name": "Выход с этой планеты",
+      "product_model": "777",
+      "product_date": "2024-10-07"
+    }
+  },
+  {
     "model": "suppliers.contacts",
     "pk": 1,
     "fields": {
@@ -115,6 +133,39 @@
     }
   },
   {
+    "model": "suppliers.contacts",
+    "pk": 5703,
+    "fields": {
+      "email": "tuztuz@sky.pro",
+      "country": "Россия",
+      "city": "Мухознанск",
+      "street": "Большие ямыри",
+      "house_number": "13"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 5704,
+    "fields": {
+      "email": "tuztuz@sky.pro",
+      "country": "Россия",
+      "city": "Мухознанск",
+      "street": "Большие ямыри",
+      "house_number": "13"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 5705,
+    "fields": {
+      "email": "tuztuz@sky.pro",
+      "country": "Россия",
+      "city": "Мухознанск",
+      "street": "Большие ямыри",
+      "house_number": "13"
+    }
+  },
+  {
     "model": "suppliers.supplier",
     "pk": 46,
     "fields": {
@@ -196,6 +247,138 @@
       "prev_supplier": 50,
       "debt": "990.00",
       "created_at": "2024-10-09T10:54:17.670Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 53,
+    "fields": {
+      "name": "OOO \"Owertested_2!\"",
+      "contacts": 1,
+      "product": 1,
+      "prev_supplier": 50,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:08:33.053Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 54,
+    "fields": {
+      "name": "ФПК \"Overtested100500\"",
+      "contacts": 1,
+      "product": 2,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:09:02.458Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 55,
+    "fields": {
+      "name": "OOO \"Owertested_7!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:31:30.090Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 56,
+    "fields": {
+      "name": "OOO \"Owertested_8!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:32:34.792Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 57,
+    "fields": {
+      "name": "OOO \"Owertested_9!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:33:29.476Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 58,
+    "fields": {
+      "name": "OOO \"Owertested_10!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:34:11.946Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 59,
+    "fields": {
+      "name": "OOO \"Owertested_11!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "100500.99",
+      "created_at": "2024-10-09T11:34:58.242Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 60,
+    "fields": {
+      "name": "OOO \"Owertested_12!\"",
+      "contacts": 1,
+      "product": 3,
+      "prev_supplier": null,
+      "debt": "0.00",
+      "created_at": "2024-10-09T11:35:42.447Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 61,
+    "fields": {
+      "name": "ФПК \"Туц-Туц\"",
+      "contacts": 5703,
+      "product": 7,
+      "prev_supplier": null,
+      "debt": "0.00",
+      "created_at": "2024-10-09T11:57:57.564Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 62,
+    "fields": {
+      "name": "OOO \"Owertested_13!\"",
+      "contacts": 1,
+      "product": 1,
+      "prev_supplier": 50,
+      "debt": "0.00",
+      "created_at": "2024-10-09T11:59:30.938Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 63,
+    "fields": {
+      "name": "ФПК \"Туц-Туц 111111\"",
+      "contacts": 5705,
+      "product": 8,
+      "prev_supplier": null,
+      "debt": "0.00",
+      "created_at": "2024-10-09T12:09:36.727Z"
     }
   }
 ]
