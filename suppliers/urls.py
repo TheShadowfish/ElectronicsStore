@@ -4,7 +4,8 @@ from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from suppliers.apps import SuppliersConfig
-from suppliers.views import SupplierViewSet, ContactsViewSet, ProductsViewSet, SupplierCreateAPIView
+from suppliers.views import SupplierViewSet, ContactsViewSet, ProductsViewSet, SupplierCreateAPIView, \
+    SupplierListAPIView
 
 router = SimpleRouter()
 router.register("suppliers", SupplierViewSet, basename="suppliers")
@@ -21,6 +22,8 @@ urlpatterns = [
 
     path("suppliers/product_contacts_exists/", SupplierCreateAPIView.as_view(),
          name="product_contacts_exists"),
+    path("suppliers/detail_view/", SupplierListAPIView.as_view(),
+         name="detail_view"),
 
 
 ]

@@ -117,7 +117,6 @@ class Supplier(models.Model):
     def clean(self):
         # Не дает одновременно заполнить продукт и поставщика"
 
-        print("SILENT SABOUTAGE!!")
         if self.product is not None and self.prev_supplier is not None:
             raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
                                   f"быть пустым",
