@@ -20,8 +20,8 @@ urlpatterns = [
     path("login/", TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(permission_classes=(AllowAny,)), name="token_refresh"),
 
-    path("suppliers/product_contacts_exists/", SupplierCreateAPIView.as_view(),
-         name="product_contacts_exists"),
+    path("suppliers/detail_create/", SupplierCreateAPIView.as_view(),
+         name="detail_create"),
     path("suppliers/detail_view/", SupplierListAPIView.as_view(),
          name="detail_view"),
 

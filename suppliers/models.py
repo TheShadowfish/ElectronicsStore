@@ -1,5 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import signals
+from django.dispatch import receiver
 
 # from suppliers.validators import validate_prev_supplier
 
@@ -38,20 +40,7 @@ def validate_prev_supplier(prev_supplier):
         return prev_supplier
 
 
-def validate_contacts(contacts):
-    if isinstance(contacts, int):
-        print("ALL OK")
-        # return contacts
-    else:
-        contacts_pk = contacts.pk
 
-
-        print(f"ALL NO OK, type {type(contacts)}, isinstance(contacts, int) {isinstance(contacts, int)}, contacts_pk {contacts_pk} |")
-
-        contacts = contacts_pk
-        # return contacts_pk
-        # raise ValidationError(f"Создание контактов в классе пока не реализовано, внесите int",
-        #                       params={"contacts": contacts})
 
 
 class Product(models.Model):
@@ -91,7 +80,7 @@ class Supplier(models.Model):
     name = models.CharField(max_length=150, verbose_name="название")
     # контакты
     contacts = models.ForeignKey("Contacts", on_delete=models.CASCADE, verbose_name="Контакты",
-                                 validators=[validate_contacts], related_name="contacts", )
+                                 related_name="contacts", )
 
     # продукт
     product = models.ForeignKey("Product", on_delete=models.CASCADE, verbose_name="Продукт", **NULLABLE,
@@ -114,6 +103,7 @@ class Supplier(models.Model):
         verbose_name_plural = "поставщики"
         ordering = ["name"]
 
+
     def clean(self):
         # Не дает одновременно заполнить продукт и поставщика"
 
@@ -134,3 +124,21 @@ class Supplier(models.Model):
 
 
 
+# @receiver(signals.pre_save, sender=Supplier)
+# def clean(self):
+#     # Не дает одновременно заполнить продукт и поставщика"
+#
+#     if self.product is not None and self.prev_supplier is not None:
+#         raise ValidationError(f"Продукт наследуется от поставщика, при наличии поставщика поле продукта должно "
+#                                   f"быть пустым",
+#                                   params={"product": self.product, "prev_supplier": self.prev_supplier})
+#     elif self.product is None and self.prev_supplier is None:
+#         raise ValidationError(f"Выберите либо продукт, либо поставщика, от которого он будет унаследован",
+#                                   params={"product": self.product, "prev_supplier": self.prev_supplier})
+#
+#     if self.prev_supplier is not None:
+#         pr_s_id = self.prev_supplier_id
+#         prev = Supplier.objects.get(pk=pr_s_id)
+#         product = Product.objects.get(pk=prev.product_id)
+#
+#         self.product = product

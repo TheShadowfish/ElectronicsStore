@@ -1,662 +1,201 @@
 [
   {
-    "model": "admin.logentry",
+    "model": "suppliers.product",
     "pk": 1,
     "fields": {
-      "action_time": "2024-10-05T07:13:23.529Z",
-      "user": 1,
-      "content_type": 4,
-      "object_id": "2",
-      "object_repr": "testuser",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
+      "product_name": "Ламповый звук",
+      "product_model": "8",
+      "product_date": "2024-10-07"
     }
   },
   {
-    "model": "admin.logentry",
+    "model": "suppliers.product",
     "pk": 2,
     "fields": {
-      "action_time": "2024-10-05T07:13:29.730Z",
-      "user": 1,
-      "content_type": 4,
-      "object_id": "2",
-      "object_repr": "testuser",
-      "action_flag": 2,
-      "change_message": "[]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 3,
-    "fields": {
-      "action_time": "2024-10-05T07:13:59.007Z",
-      "user": 1,
-      "content_type": 4,
-      "object_id": "3",
-      "object_repr": "unactiveuser",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 4,
-    "fields": {
-      "action_time": "2024-10-05T07:14:03.155Z",
-      "user": 1,
-      "content_type": 4,
-      "object_id": "3",
-      "object_repr": "unactiveuser",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-      "action_time": "2024-10-05T07:17:40.841Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "1",
-      "object_repr": "ГОК \"LithiumPower\", продукт элементы питания",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 6,
-    "fields": {
-      "action_time": "2024-10-05T07:19:20.972Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "2",
-      "object_repr": "ООО \"Гаджет-Энерджи\", продукт 7",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 7,
-    "fields": {
-      "action_time": "2024-10-05T07:20:40.703Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "3",
-      "object_repr": "ООО \"Электророзница\", продукт элементы питания",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 8,
-    "fields": {
-      "action_time": "2024-10-05T07:21:11.503Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "2",
-      "object_repr": "ООО \"Гаджет-Энерджи\", продукт элементы питания",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\", \"\\u041c\\u043e\\u0434\\u0435\\u043b\\u044c \\u043f\\u0440\\u043e\\u0434\\u0443\\u043a\\u0442\\u0430\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 9,
-    "fields": {
-      "action_time": "2024-10-05T07:22:24.174Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "4",
-      "object_repr": "ООО \"ФиксПрайс\", продукт элементы питания",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 10,
-    "fields": {
-      "action_time": "2024-10-05T08:43:47.356Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "7",
-      "object_repr": "tttt, продукт yyy",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 11,
-    "fields": {
-      "action_time": "2024-10-05T08:44:46.378Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "7",
-      "object_repr": "tttt, продукт yyy",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0430\\u0432\\u0449\\u0438\\u043a\"]}}]"
-    }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 12,
-    "fields": {
-      "action_time": "2024-10-05T11:55:30.241Z",
-      "user": 1,
-      "content_type": 7,
-      "object_id": "8",
-      "object_repr": "ФПК \"Гроб с музыкой\", продукт ламповый звук",
-      "action_flag": 2,
-      "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0440\\u0430\\u043d\\u0430\"]}}]"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 1,
-    "fields": {
-      "name": "Can add log entry",
-      "content_type": 1,
-      "codename": "add_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-      "name": "Can change log entry",
-      "content_type": 1,
-      "codename": "change_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-      "name": "Can delete log entry",
-      "content_type": 1,
-      "codename": "delete_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-      "name": "Can view log entry",
-      "content_type": 1,
-      "codename": "view_logentry"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-      "name": "Can add permission",
-      "content_type": 2,
-      "codename": "add_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-      "name": "Can change permission",
-      "content_type": 2,
-      "codename": "change_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-      "name": "Can delete permission",
-      "content_type": 2,
-      "codename": "delete_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-      "name": "Can view permission",
-      "content_type": 2,
-      "codename": "view_permission"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-      "name": "Can add group",
-      "content_type": 3,
-      "codename": "add_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-      "name": "Can change group",
-      "content_type": 3,
-      "codename": "change_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-      "name": "Can delete group",
-      "content_type": 3,
-      "codename": "delete_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-      "name": "Can view group",
-      "content_type": 3,
-      "codename": "view_group"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-      "name": "Can add user",
-      "content_type": 4,
-      "codename": "add_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-      "name": "Can change user",
-      "content_type": 4,
-      "codename": "change_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-      "name": "Can delete user",
-      "content_type": 4,
-      "codename": "delete_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-      "name": "Can view user",
-      "content_type": 4,
-      "codename": "view_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-      "name": "Can add content type",
-      "content_type": 5,
-      "codename": "add_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-      "name": "Can change content type",
-      "content_type": 5,
-      "codename": "change_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-      "name": "Can delete content type",
-      "content_type": 5,
-      "codename": "delete_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-      "name": "Can view content type",
-      "content_type": 5,
-      "codename": "view_contenttype"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-      "name": "Can add session",
-      "content_type": 6,
-      "codename": "add_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-      "name": "Can change session",
-      "content_type": 6,
-      "codename": "change_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-      "name": "Can delete session",
-      "content_type": 6,
-      "codename": "delete_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-      "name": "Can view session",
-      "content_type": 6,
-      "codename": "view_session"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-      "name": "Can add поставщик",
-      "content_type": 7,
-      "codename": "add_supplier"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-      "name": "Can change поставщик",
-      "content_type": 7,
-      "codename": "change_supplier"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-      "name": "Can delete поставщик",
-      "content_type": 7,
-      "codename": "delete_supplier"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-      "name": "Can view поставщик",
-      "content_type": 7,
-      "codename": "view_supplier"
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 1,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$6s73DXN9twQwDIh1olfwuJ$9jySrSKsgn7ruFHh/NN7yhRW/kCHh4RqU+vBbpc0a6c=",
-      "last_login": "2024-10-05T07:12:53.063Z",
-      "is_superuser": true,
-      "username": "admin",
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "is_staff": true,
-      "is_active": true,
-      "date_joined": "2024-10-05T07:12:23.497Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 2,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$LMwwby4S9BkAUiFIdD7hzm$imB97Z/zfFLsfr0Ool1qKkMH8HsflAbSywJGFvB4/Ng=",
-      "last_login": "2024-10-05T11:33:17.938Z",
-      "is_superuser": false,
-      "username": "testuser",
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2024-10-05T07:13:22Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 3,
-    "fields": {
-      "password": "pbkdf2_sha256$870000$zdnIGVlWuF2tkrRo7G6Al4$1yKypMCWa6UyRzrEuKarT0mVCKQaR/PTAN0hv5f1ojU=",
-      "last_login": null,
-      "is_superuser": false,
-      "username": "unactiveuser",
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "is_staff": false,
-      "is_active": false,
-      "date_joined": "2024-10-05T07:13:57Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-      "app_label": "admin",
-      "model": "logentry"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-      "app_label": "auth",
-      "model": "permission"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-      "app_label": "auth",
-      "model": "group"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-      "app_label": "auth",
-      "model": "user"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-      "app_label": "contenttypes",
-      "model": "contenttype"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-      "app_label": "sessions",
-      "model": "session"
-    }
-  },
-  {
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-      "app_label": "suppliers",
-      "model": "supplier"
-    }
-  },
-  {
-    "model": "sessions.session",
-    "pk": "mpc3u83227n2jg694xqtzh0wz0r4wty0",
-    "fields": {
-      "session_data": ".eJxVjMEOwiAQRP-FsyEFwaUevfcbmt2yK1UDSWlPxn-3JD3oaZJ5b-atRtzWNG6Vl3GO6qqMOv12hNOTcwPxgfle9FTyusykm6IPWvVQIr9uh_t3kLCmfS0kTkwAK2cGY_toHMhFuPO4B1IXxQKSZ0YhCyE48U11rqfIAdTnCww4ORA:1swyyD:mE1_-0V2JQH2KHEofYylj4Guxab_utjskVv46UGjmVA",
-      "expire_date": "2024-10-19T07:12:53.066Z"
-    }
-  },
-  {
-    "model": "sessions.session",
-    "pk": "taf5jna1ztzn5t1el4tmilv4cmhxf377",
-    "fields": {
-      "session_data": ".eJxVjMEOwiAQRP-FsyEFwaUevfcbmt2yK1UDSWlPxn-3JD3oaZJ5b-atRtzWNG6Vl3GO6qqMOv12hNOTcwPxgfle9FTyusykm6IPWvVQIr9uh_t3kLCmfS0kTkwAK2cGY_toHMhFuPO4B1IXxQKSZ0YhCyE48U11rqfIAdTnCww4ORA:1swyyC:SAaVyFuHjrHk2lgtjuENrA2u4Xt3PXxst9QId-beF8k",
-      "expire_date": "2024-10-19T07:12:52.060Z"
-    }
-  },
-  {
-    "model": "suppliers.supplier",
-    "pk": 1,
-    "fields": {
-      "name": "ГОК \"LithiumPower\"",
-      "email": "LithiumPower@sky.pro",
-      "country": "Россия",
-      "city": "Горнознатьевск",
-      "street": "Трансгуманистская",
-      "house_number": "15",
-      "product_name": "элементы питания",
-      "product_model": "7",
-      "product_date": "2024-10-05",
-      "prev_supplier": null,
-      "debt": "0.00",
-      "created_at": "2024-10-05T07:17:40.839Z"
-    }
-  },
-  {
-    "model": "suppliers.supplier",
-    "pk": 2,
-    "fields": {
-      "name": "ООО \"Гаджет-Энерджи\"",
-      "email": "gad.ge.ti@sky.pro",
-      "country": "Россия",
-      "city": "Омск",
-      "street": "Таволжская",
-      "house_number": "77",
-      "product_name": "элементы питания",
-      "product_model": "7",
-      "product_date": "2024-10-05",
-      "prev_supplier": 1,
-      "debt": "9999.78",
-      "created_at": "2024-10-05T07:19:20.969Z"
-    }
-  },
-  {
-    "model": "suppliers.supplier",
-    "pk": 3,
-    "fields": {
-      "name": "ООО \"Электророзница\"",
-      "email": "electroforall@sky.pro",
-      "country": "Россия",
-      "city": "Гурьевск",
-      "street": "Семидневная",
-      "house_number": "34",
-      "product_name": "элементы питания",
-      "product_model": "7",
-      "product_date": "2024-10-05",
-      "prev_supplier": 1,
-      "debt": "7999.00",
-      "created_at": "2024-10-05T07:20:40.701Z"
-    }
-  },
-  {
-    "model": "suppliers.supplier",
-    "pk": 4,
-    "fields": {
-      "name": "ООО \"ФиксПрайс\"",
-      "email": "fixprice@sky.pro",
-      "country": "Россия",
-      "city": "Санк-Петербург",
-      "street": "Ленина",
-      "house_number": "21",
-      "product_name": "элементы питания",
-      "product_model": "7",
-      "product_date": "2024-10-05",
-      "prev_supplier": 2,
-      "debt": "7000.00",
-      "created_at": "2024-10-05T07:22:24.171Z"
-    }
-  },
-  {
-    "model": "suppliers.supplier",
-    "pk": 5,
-    "fields": {
-      "name": "ООО \"Ламповый завод\"",
-      "email": "lampfactory@sky.pro",
-      "country": "Россия",
-      "city": "Архангельск",
-      "street": "Привокзальная",
-      "house_number": "1к.Е",
-      "product_name": "ламповый звук",
+      "product_name": "Источник питания",
       "product_model": "3",
-      "product_date": "2024-10-05",
-      "prev_supplier": null,
-      "debt": "0.00",
-      "created_at": "2024-10-05T08:00:58.915Z"
+      "product_date": "2024-10-07"
     }
   },
   {
-    "model": "suppliers.supplier",
-    "pk": 8,
+    "model": "suppliers.product",
+    "pk": 3,
     "fields": {
-      "name": "ФПК \"Гроб с музыкой\"",
+      "product_name": "Выход с этой планеты",
+      "product_model": "777",
+      "product_date": "2024-10-07"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 1,
+    "fields": {
       "email": "marshrutka@sky.pro",
       "country": "Owlcounty",
       "city": "Архангельск",
       "street": "Воскресенская",
-      "house_number": "77-2",
-      "product_name": "ламповый звук",
-      "product_model": "3",
-      "product_date": "2024-10-05",
-      "prev_supplier": 5,
-      "debt": "999.00",
-      "created_at": "2024-10-05T09:31:08.941Z"
+      "house_number": "77-2"
     }
   },
   {
-    "model": "suppliers.supplier",
-    "pk": 9,
+    "model": "suppliers.contacts",
+    "pk": 2,
     "fields": {
-      "name": "ФПК \"Гроб с музыкой\"",
       "email": "marshrutka@sky.pro",
       "country": "Аргентина",
       "city": "Буэнос-Айрес",
       "street": "Центральная",
-      "house_number": "77-2",
-      "product_name": "ламповый звук",
-      "product_model": "3",
-      "product_date": "2024-10-05",
-      "prev_supplier": 5,
+      "house_number": "77-2"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 3,
+    "fields": {
+      "email": "gad.ge.ti@sky.pro",
+      "country": "Россия",
+      "city": "Омск",
+      "street": "Таволжская",
+      "house_number": "77"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 4,
+    "fields": {
+      "email": "LithiumPower@sky.pro",
+      "country": "Россия",
+      "city": "Горнознатьевск",
+      "street": "Трансгуманистская",
+      "house_number": "15"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 5,
+    "fields": {
+      "email": "lampfactory@sky.pro",
+      "country": "Россия",
+      "city": "Архангельск",
+      "street": "Привокзальная",
+      "house_number": "1к.Е"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 6,
+    "fields": {
+      "email": "fixprice@sky.pro",
+      "country": "Россия",
+      "city": "Санкт-Петербург",
+      "street": "Ленина",
+      "house_number": "21"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 7,
+    "fields": {
+      "email": "electroforall@sky.pro",
+      "country": "Россия",
+      "city": "Гурьевск",
+      "street": "Семидневная",
+      "house_number": "34"
+    }
+  },
+  {
+    "model": "suppliers.contacts",
+    "pk": 38,
+    "fields": {
+      "email": "tuztuz@sky.pro",
+      "country": "Россия",
+      "city": "",
+      "street": "Большие ямыри",
+      "house_number": "13"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 46,
+    "fields": {
+      "name": "ГОК \"LithiumPower\"",
+      "contacts": 4,
+      "product": 2,
+      "prev_supplier": null,
+      "debt": "0.00",
+      "created_at": "2024-10-09T10:48:22.846Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 47,
+    "fields": {
+      "name": "ООО \"Гаджет-Энерджи\"",
+      "contacts": 3,
+      "product": 2,
+      "prev_supplier": 46,
+      "debt": "9999.78",
+      "created_at": "2024-10-09T10:49:25.342Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 48,
+    "fields": {
+      "name": "ООО \"Электророзница\"",
+      "contacts": 7,
+      "product": 2,
+      "prev_supplier": 47,
+      "debt": "0.00",
+      "created_at": "2024-10-09T10:50:17.578Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 49,
+    "fields": {
+      "name": "ООО \"ФиксПрайс\"",
+      "contacts": 6,
+      "product": 2,
+      "prev_supplier": 46,
+      "debt": "0.00",
+      "created_at": "2024-10-09T10:51:10.164Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 50,
+    "fields": {
+      "name": "ООО \"Ламповый завод\"",
+      "contacts": 5,
+      "product": 1,
+      "prev_supplier": null,
+      "debt": "0.00",
+      "created_at": "2024-10-09T10:51:45.351Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 51,
+    "fields": {
+      "name": "ФПК \"Гроб с музыкой\"",
+      "contacts": 2,
+      "product": 1,
+      "prev_supplier": 50,
       "debt": "9997.00",
-      "created_at": "2024-10-05T10:01:37.382Z"
+      "created_at": "2024-10-09T10:53:42.113Z"
+    }
+  },
+  {
+    "model": "suppliers.supplier",
+    "pk": 52,
+    "fields": {
+      "name": "ФПК \"Гроб с музыкой\"",
+      "contacts": 1,
+      "product": 1,
+      "prev_supplier": 50,
+      "debt": "990.00",
+      "created_at": "2024-10-09T10:54:17.670Z"
     }
   }
 ]

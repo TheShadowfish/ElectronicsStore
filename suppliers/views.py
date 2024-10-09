@@ -15,9 +15,9 @@ from suppliers.serializers import SupplierSerializerUpdate, SupplierSerializer, 
 from suppliers.service import Logger
 
 
-def redirect_to_admin(request):
-    # Не набирать без конца адрес в браузере
-    return redirect("admin/")
+# def redirect_to_admin(request):
+#     # Не набирать без конца адрес в браузере
+#     return redirect("admin/")
 
 @method_decorator(
     name="list",
@@ -64,8 +64,6 @@ class SupplierViewSet(ModelViewSet):
             queryset = queryset.filter(contacts__country=country)
 
         return queryset
-
-
 
 
 @method_decorator(
@@ -126,7 +124,7 @@ class ProductsViewSet(ModelViewSet):
 
 
 class SupplierCreateAPIView(CreateAPIView):
-    """Создание поставщика по имеющимся идентификатора контактов продукта"""
+    """Создание нового поставщика вместе с его контактами и продуктом"""
     queryset = Contacts.objects.all()
     permission_classes = (IsAuthenticated, IsActive)
 
