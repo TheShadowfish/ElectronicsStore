@@ -14,7 +14,8 @@ def validate_product_and_prev_supplier(data):
 
 def validate_debt_and_prev_supplier(data):
     """Проверка: отсутствие предыдущего поставщика не дает внести долг перед ним"""
-    if data.get("prev_supplier") is None and data.get("debt") > 0:
-        raise ValidationError("При отсутствии предыдущего поставщика долг перед ним внести невозможно")
+    if data.get("prev_supplier") is None and data.get("debt") is not None:
+        if  data.get("debt") > 0:
+            raise ValidationError("При отсутствии предыдущего поставщика долг перед ним внести невозможно")
     else:
         return data
