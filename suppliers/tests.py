@@ -222,6 +222,24 @@ class SupplierTestCase(APITestCase):
         self.assertEqual(Supplier.objects.all().count(), 2)
 
 
+    def test_product_list(self):
+        url = reverse("suppliers:products-list")
+        response = self.client.get(url)
+
+        # data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # self.assertEqual(data, result)
+
+    def test_contacts_list(self):
+        url = reverse("suppliers:contacts-list")
+        response = self.client.get(url)
+
+        # data = response.json()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # self.assertEqual(data, result)
+
+
 class AdminTestCase(APITestCase):
     """Тестирование модели Supplier"""
 
@@ -308,4 +326,10 @@ class AdminTestCase(APITestCase):
         number = SupplierProduct.suppliers_number(self, self.product)
         self.assertEqual(number, '1')
 
+    def test_supplier_city(self):
+        city = SupplierAdmin.supplier_city(self, self.supplier)
+        self.assertEqual(city, "test")
 
+
+# class SupplierModelsTestCase(APITestCase):
+#     """Тестирование модели Supplier"""
