@@ -38,6 +38,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # path("users/", include("users.urls", namespace="users")),
     # path("", include("suppliers.urls", namespace="enter")),
+    path("users/", include("users.urls", namespace="users")),
     path("", include("suppliers.urls", namespace="suppliers")),
 
     path("swagger<format>/", schema_view.without_ui(cache_timeout=0), name="schema-json"),
